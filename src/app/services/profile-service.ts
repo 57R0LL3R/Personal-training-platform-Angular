@@ -19,4 +19,7 @@ export class ProfileService {
   addProfile(model:Profile):Observable<Profile>{
     return this.http.post<Profile>(enviroment.endPoint+'Profiles',model)
   }
+  updateProfile(model:Profile,id:number):Observable<Profile>{
+    return this.http.put<Profile>(enviroment.endPoint+'Profiles/'+id,model)
+  }
 }
