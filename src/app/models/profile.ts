@@ -7,6 +7,6 @@ export interface Profile{
     Weight:number,
     Gender:string,
     UserId:string,
-    User:User
+    User:User|null
 }
    
