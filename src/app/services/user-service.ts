@@ -20,6 +20,7 @@ export class UserService {
   addProfile(model:User):Observable<User>{
     return this.http.post<User>(enviroment.endPoint+'Users',model)
   }
+  
   updateProfile(model:User,id:number):Observable<User>{
     return this.http.put<User>(enviroment.endPoint+'Users/'+id,model)
   }
