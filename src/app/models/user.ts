@@ -5,6 +5,7 @@ export interface User{
     Username:string,
     Email:string
     Role:string,
+    PasswordHash:string,
     Profile:Profile
     /*UserGoals:UserGoals[],
     Routines:Routine[],
