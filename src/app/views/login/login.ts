@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login-service';
+import { Profile } from '../../models/profile';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +12,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class Login {
   loginForm!: FormGroup;
-
-  constructor(private fb: FormBuilder) {}
+  account!:User;
+  constructor(private fb: FormBuilder,private Ls:LoginService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -22,6 +25,10 @@ export class Login {
   onLogin(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
+      const login_values = this.loginForm.value;
+      this.account.Email=login_values.email
+      this.account.PasswordHash=login_values.password
+      console.log(this.Ls.login(this.account))
       return;
     }
 
